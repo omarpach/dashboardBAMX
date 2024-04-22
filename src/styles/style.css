@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    text-align: center;
+    background: linear-gradient(180deg,#0037B6, #04102D);    
+    background-attachment: fixed;
+}
+
+form {
+    display: inline-block;
+    text-align: left;
+}
+
+button {
+    padding: 10px 20px;
+    margin-left: 10px;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+h1 {
+    font-size: 50px;
+}
+.input_text {
+    margin-left: 10px;
+    padding-left: 10px 50px;
+    font-size: 25px;
+    border-radius: 5px;
+    box-sizing: content-box;
+}
+
+.container-login{
+    margin-top: 50px;
+    margin-left: 600px;
+    margin-right: 600px;
+    padding: 100px;
+    background-color: #ffffff15;
+    border-radius: 10%;
+}
