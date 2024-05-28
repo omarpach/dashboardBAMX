@@ -1,5 +1,3 @@
-import bcrypt from 'bcrypt';
-
 const controller = {};
 
 controller.login = (req, res) => {

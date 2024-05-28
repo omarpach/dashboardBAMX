@@ -14,9 +14,6 @@ router.get('/register', (req, res) => {
     res.render('../views/register', { siteKey: '6Lc-FOopAAAAAO3fAv_3wyUbP2nmHwRpkOJtd2-A' });
 });
 
-// router.get('/dashboard', (req, res) => {
-//     res.render('../views/dashboard', { messages: {} });
-// });
 router.get('/dashboard', (req, res) => {
     const filters = {
         Area: req.query.Area || '',
@@ -144,18 +141,6 @@ router.get('/data', (req, res) => {
         query += ' AND Unit = ?';
         params.push(filters.Unit);
     }
-
-    console.log('Query:', query);
-    console.log('Params:', params);
-
-    // req.getConnection((err, connection) => {
-    //     if (err) return res.status(500).send(err);
-
-    //     connection.query(query, params, (err, rows) => {
-    //         if (err) return res.status(501).send(err);
-    //         //res.json(rows);
-    //     });
-    // });
 
     query += ' LIMIT ? OFFSET ?';
     params.push(pageSize, offset);
