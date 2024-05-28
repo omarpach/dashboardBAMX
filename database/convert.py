@@ -1,7 +1,7 @@
 import csv
 
 # File paths
-csv_file_path = 'data.csv'
+csv_file_path = 'live1.csv'
 sql_file_path = 'data.sql'
 
 # Table name
