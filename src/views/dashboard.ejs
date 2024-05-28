@@ -3,11 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="/styles/style.css">
+    <title>World Cup Winners and Runners-Up Heatmap</title>
+    <link rel="stylesheet" href="./styles/dashboard_style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <h1>Welcome to the Dashboard, <%= username %>!</h1>
-    <a href="/logout">Logout</a>
+    <div class="container">
+        <h1>World Cup Winners and Runners-Up Heatmap</h1>
+        <canvas id="heatmap"></canvas>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('/api/data')
+                .then(response => response.json())
+                .then(data => {
+                    const years = data.map(item => item.YEAR);
+                    const champions = {};
+                    const runnersUp = {};
+
+                    data.forEach(item => {
+                        champions[item.CHAMPION] = (champions[item.CHAMPION] || 0) + 1;
+                        runnersUp[item.SEGUNDONES] = (runnersUp[item.SEGUNDONES] || 0) + 1;
+                    });
+
+                    const countries = Array.from(new Set([...Object.keys(champions), ...Object.keys(runnersUp)]));
+
+                    const heatmapData = {
+                        labels: countries,
+                        datasets: [
+                            {
+                                label: 'Champions',
+                                data: countries.map(country => champions[country] || 0),
+                                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                                borderColor: 'rgba(255, 99, 132, 1)',
+                                borderWidth: 1
+                            },
+                            {
+                                label: 'Segundones',
+                                data: countries.map(country => runnersUp[country] || 0),
+                                backgroundColor: 'rgba(54, 162, 235, 0.5)',
+                                borderColor: 'rgba(54, 162, 235, 1)',
+                                borderWidth: 1
+                            }
+                        ]
+                    };
+
+                    const ctx = document.getElementById('heatmap').getContext('2d');
+                    new Chart(ctx, {
+                        type: 'bar',
+                        data: heatmapData,
+                        options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+                });
+        });
+    </script>
 </body>
 </html>

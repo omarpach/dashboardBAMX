@@ -27,19 +27,17 @@ app.use(morgan('dev'));
 app.use(myConnection(mysql, {
     host: 'localhost',
     user: 'root',
-    password: 'root',
+    password: '',
     port: 3306,
-    database: 'mi_club'
+    database: 'banco_alimentos'
     }, 'single'));
-
+// Middlewares
+app.use(express.urlencoded({ extended: true }));
 // Usar el enrutador de páginas
 app.use('/', router);
 
 // Rutas estáticas
 app.use(express.static(path.join(__dirname, 'public')));
-
-// Middlewares
-app.use(express.urlencoded({ extended: false }));
 
 
 // Routes
