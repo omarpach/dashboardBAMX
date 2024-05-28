@@ -4,14 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.mjs"
+    "dev": "node src/index.mjs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "connect-mongo": "^5.1.0",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
-    "morgan": "^1.10.0"
+    "express-myconnection": "^1.0.4",
+    "express-session": "^1.18.0",
+    "mongoose": "^8.4.0",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1"
   }
 }

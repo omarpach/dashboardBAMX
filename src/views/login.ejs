@@ -4,16 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
-    <div class="container-login">
-    <h1>Login</h1>
-    <form action="/login" method="POST">
-        <input class="input_text" type="text" id="username" name="username" required><br><br>
-        <input class="input_text" type="password" id="password" name="password" required><br><br>
-        <button type="submit">Login</button>
-    </form>
-</div>
+    <div class="container">
+        <div class="left-section">
+            <div class="logo">
+              <img src="./img/logo.svg" alt="BAMX">
+            </div>
+            <p>¡Bienvenido! Ingresa a tu cuenta.</p>
+            <form action="/add" class="login-form" method="post">
+                <input type="email" id="email" name="email" placeholder="Correo:">
+                <input type="password" id="password" name="password" placeholder="Contraseña:">
+                <a class="rec_password" href="#">Olvidaste tu Contraseña?</a>
+                <button type="submit">Acceder</button>
+                <button type="button" onclick="window.location.href='/register';">Registrarte</button>
+            </form>
+        </div>
+        <div class="right-section">
+            <img src="./img/banner_bmx.svg" alt="BAMX Hermosillo">
+            <div class="navigation">
+                <a href="/" class="active">Inicio</a>
+                <a href="/about">¿Quiénes somos?</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
