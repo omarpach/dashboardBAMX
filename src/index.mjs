@@ -1,7 +1,6 @@
 import express from 'express';
 import morgan from 'morgan';
 import mysql from 'mysql';
-import bodyParser from 'body-parser';
 import myConnection from 'express-myconnection';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -14,8 +13,6 @@ const port = 3000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-
-//app.set('port', process.env.PORT || 3000);
 // Configurar el motor de plantillas EJS
 const viewsPath = path.join(fileURLToPath(import.meta.url), '..', 'views');
 app.set('views', viewsPath);
