@@ -1,68 +1,138 @@
+<!-- <!DOCTYPE html> -->
+<!-- <html lang="en"> -->
+<!-- <head> -->
+<!--     <meta charset="UTF-8"> -->
+<!--     <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+<!--     <title>World Cup Winners and Runners-Up Heatmap</title> -->
+<!--     <link rel="stylesheet" href="./styles/dashboard_style.css"> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+<!-- </head> -->
+<!-- <body> -->
+<!--     <div class="container"> -->
+<!--         <h1>World Cup Winners and Runners-Up Heatmap</h1> -->
+<!--         <canvas id="heatmap"></canvas> -->
+<!--     </div> -->
+
+<!--     <script> -->
+<!--         document.addEventListener('DOMContentLoaded', () => { -->
+<!--             fetch('/api/data') -->
+<!--                 .then(response => response.json()) -->
+<!--                 .then(data => { -->
+<!--                     const years = data.map(item => item.YEAR); -->
+<!--                     const champions = {}; -->
+<!--                     const runnersUp = {}; -->
+
+<!--                     data.forEach(item => { -->
+<!--                         champions[item.CHAMPION] = (champions[item.CHAMPION] || 0) + 1; -->
+<!--                         runnersUp[item.SEGUNDONES] = (runnersUp[item.SEGUNDONES] || 0) + 1; -->
+<!--                     }); -->
+
+<!--                     const countries = Array.from(new Set([...Object.keys(champions), ...Object.keys(runnersUp)])); -->
+
+<!--                     const heatmapData = { -->
+<!--                         labels: countries, -->
+<!--                         datasets: [ -->
+<!--                             { -->
+<!--                                 label: 'Champions', -->
+<!--                                 data: countries.map(country => champions[country] || 0), -->
+<!--                                 backgroundColor: 'rgba(255, 99, 132, 0.5)', -->
+<!--                                 borderColor: 'rgba(255, 99, 132, 1)', -->
+<!--                                 borderWidth: 1 -->
+<!--                             }, -->
+<!--                             { -->
+<!--                                 label: 'Segundones', -->
+<!--                                 data: countries.map(country => runnersUp[country] || 0), -->
+<!--                                 backgroundColor: 'rgba(54, 162, 235, 0.5)', -->
+<!--                                 borderColor: 'rgba(54, 162, 235, 1)', -->
+<!--                                 borderWidth: 1 -->
+<!--                             } -->
+<!--                         ] -->
+<!--                     }; -->
+
+<!--                     const ctx = document.getElementById('heatmap').getContext('2d'); -->
+<!--                     new Chart(ctx, { -->
+<!--                         type: 'bar', -->
+<!--                         data: heatmapData, -->
+<!--                         options: { -->
+<!--                             scales: { -->
+<!--                                 y: { -->
+<!--                                     beginAtZero: true -->
+<!--                                 } -->
+<!--                             } -->
+<!--                         } -->
+<!--                     }); -->
+<!--                 }); -->
+<!--         }); -->
+<!--     </script> -->
+<!-- </body> -->
+<!-- </html> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>World Cup Winners and Runners-Up Heatmap</title>
-    <link rel="stylesheet" href="./styles/dashboard_style.css">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Agriculture Data Filter</title>
+        <link rel="stylesheet" href="./styles/dashboard_style.css">
 </head>
 <body>
     <div class="container">
-        <h1>World Cup Winners and Runners-Up Heatmap</h1>
-        <canvas id="heatmap"></canvas>
+        <h1>Datos de producción de alimentos</h1>
+        <form method="GET" action="/data">
+            <div class="form-group">
+                <label for="Area">País:</label>
+                <input type="text" id="Area" name="Area" value="<%= filters.Area %>">
+            </div>
+            <div class="form-group">
+                <label for="Item">Producto:</label>
+                <input type="text" id="Item" name="Item" value="<%= filters.Item %>">
+            </div>
+            <div class="form-group">
+                <label for="Element">Element:</label>
+                <input type="text" id="Element" name="Element" value="<%= filters.Element %>">
+            </div>
+            <div class="form-group">
+                <label for="Year">Año:</label>
+                <input type="text" id="Year" name="Year" value="<%= filters.Year %>">
+            </div>
+            <div class="form-group">
+                <label for="Unit">Unidad:</label>
+                <input type="text" id="Unit" name="Unit" value="<%= filters.Unit %>">
+            </div>
+            <button type="submit">Filter</button>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Area</th>
+                    <th>Item</th>
+                    <th>Element</th>
+                    <th>Year</th>
+                    <th>Unit</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% data.forEach(row => { %>
+                    <tr>
+                        <td><%= row.Area %></td>
+                        <td><%= row.Item %></td>
+                        <td><%= row.Element %></td>
+                        <td><%= row.Year %></td>
+                        <td><%= row.Unit %></td>
+                        <td><%= row.Value %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+     <div class="pagination">
+            <% if (pagination.page > 1) { %>
+                <a href="?page=<%= pagination.page - 1 %>&pageSize=<%= pagination.pageSize %>&Area=<%= filters.Area %>&Item=<%= filters.Item %>&Element=<%= filters.Element %>&Year=<%= filters.Year %>&Unit=<%= filters.Unit %>"><-- </a>
+            <% } %>
+            <% if (pagination.page < pagination.totalPages) { %>
+                <a href="?page=<%= pagination.page + 1 %>&pageSize=<%= pagination.pageSize %>&Area=<%= filters.Area %>&Item=<%= filters.Item %>&Element=<%= filters.Element %>&Year=<%= filters.Year %>&Unit=<%= filters.Unit %>"> --> </a>
+            <% } %>
+        </div>
     </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            fetch('/api/data')
-                .then(response => response.json())
-                .then(data => {
-                    const years = data.map(item => item.YEAR);
-                    const champions = {};
-                    const runnersUp = {};
-
-                    data.forEach(item => {
-                        champions[item.CHAMPION] = (champions[item.CHAMPION] || 0) + 1;
-                        runnersUp[item.SEGUNDONES] = (runnersUp[item.SEGUNDONES] || 0) + 1;
-                    });
-
-                    const countries = Array.from(new Set([...Object.keys(champions), ...Object.keys(runnersUp)]));
-
-                    const heatmapData = {
-                        labels: countries,
-                        datasets: [
-                            {
-                                label: 'Champions',
-                                data: countries.map(country => champions[country] || 0),
-                                backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                                borderColor: 'rgba(255, 99, 132, 1)',
-                                borderWidth: 1
-                            },
-                            {
-                                label: 'Segundones',
-                                data: countries.map(country => runnersUp[country] || 0),
-                                backgroundColor: 'rgba(54, 162, 235, 0.5)',
-                                borderColor: 'rgba(54, 162, 235, 1)',
-                                borderWidth: 1
-                            }
-                        ]
-                    };
-
-                    const ctx = document.getElementById('heatmap').getContext('2d');
-                    new Chart(ctx, {
-                        type: 'bar',
-                        data: heatmapData,
-                        options: {
-                            scales: {
-                                y: {
-                                    beginAtZero: true
-                                }
-                            }
-                        }
-                    });
-                });
-        });
-    </script>
 </body>
 </html>
