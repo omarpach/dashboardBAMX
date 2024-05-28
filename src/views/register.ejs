@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./styles/register_style.css">
+    <title>Registro - BAMX</title>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="./img/logo.svg" alt="BAMX" onclick="window.location.href='/login';">
+        </div>
+        <h1>Registro a usuarios</h1>
+        <form class="registro-form" method="POST" action="/register">
+            <div class="form-group">
+                <label for="nombre">*Nombre</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="email">*Correo electrónico</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">*Contraseña</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <div class="g-recaptcha" data-sitekey="<%= siteKey %>"></div>
+            </div>
+            <div class="form-group">
+                <button type="submit">Continuar</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Incluye la biblioteca de reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</body>
+</html>
