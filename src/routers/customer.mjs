@@ -64,7 +64,7 @@ router.get('/dashboard', (req, res) => {
             if (err) return res.status(501).send(err);
 
             // Obtener el total de registros
-            let countQuery = 'SELECT COUNT(*) as count FROM personas WHERE 1=1';
+            let countQuery = 'SELECT COUNT(*) as count FROM winners WHERE 1=1';
             const countParams = [];
 
             if (filters.Area) {
