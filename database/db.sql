@@ -38,13 +38,6 @@ INSERT INTO usuarios (nombre, correo, pass) VALUES
 ('Sofia', 'sofia@example.com', 'password20'),
 ('Omar', 'omy250@gmail.com', 'password2024');
 
-SHOW TABLES;
-DESCRIBE usuarios;
-SELECT * FROM usuarios;
-
-DROP DATABASE IF EXISTS db;
-CREATE DATABASE db;
-USE db;
 CREATE TABLE titanic
 (
     PassengerId INT NOT NULL AUTO_INCREMENT,
@@ -947,3 +940,5 @@ INSERT IGNORE INTO titanic (PassengerId, Survived, Pclass, Name, Sex, Age, SibSp
 SHOW TABLES;
 DESCRIBE titanic;
 SELECT * FROM titanic;
+DESCRIBE usuarios;
+SELECT * FROM usuarios;

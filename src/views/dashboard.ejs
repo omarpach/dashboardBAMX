@@ -8,27 +8,43 @@
 </head>
 <body>
     <div class="container">
-        <h1>Datos de producción de alimentos</h1>
+        <h1>Datos de los pasajeros del Titanic</h1>
         <form method="GET" action="/data">
             <div class="form-group">
-                <label for="Area">País:</label>
-                <input type="text" id="Area" name="Area" value="<%= filters.Area %>">
+                <label for="Survived">Sobrevio:</label>
+                <input type="number" id="Survived" name="Survived" value="<%= filters.Survived %>">
             </div>
             <div class="form-group">
-                <label for="Item">Producto:</label>
-                <input type="text" id="Item" name="Item" value="<%= filters.Item %>">
+                <label for="Pclass">Clase del pasajero:</label>
+                <input type="number" id="Pclass" name="Pclass" value="<%= filters.Pclass %>">
             </div>
             <div class="form-group">
-                <label for="Element">Element:</label>
-                <input type="text" id="Element" name="Element" value="<%= filters.Element %>">
+                <label for="Name">Nombre:</label>
+                <input type="text" id="Name" name="Name" value="<%= filters.Name %>">
             </div>
             <div class="form-group">
-                <label for="Year">Año:</label>
-                <input type="text" id="Year" name="Year" value="<%= filters.Year %>">
+                <label for="Sex">Sexo:</label>
+                <input type="text" id="Sex" name="Sex" value="<%= filters.Sex %>">
             </div>
             <div class="form-group">
-                <label for="Unit">Unidad:</label>
-                <input type="text" id="Unit" name="Unit" value="<%= filters.Unit %>">
+                <label for="Age">Edad:</label>
+                <input type="number" id="Age" name="Age" value="<%= filters.Age %>">
+            </div>
+            <div class="form-group">
+                <label for="Ticket">Ticket:</label>
+                <input type="text" id="Ticket" name="Ticket" value="<%= filters.Ticket %>">
+            </div>
+            <div class="form-group">
+                <label for="Fare">Precio del ticket:</label>
+                <input type="number" id="Fare" name="Fare" value="<%= filters.Fare %>">
+            </div>
+            <div class="form-group">
+                <label for="Cabin">Numero de Cabina</label>
+                <input type="text" id="Cabin" name="Cabin" value="<%= filters.Cabin %>">
+            </div>
+            <div class="form-group">
+                <label for="Embarked">Embarco:</label>
+                <input type="text" id="Embarked" name="Embarked" value="<%= filters.Embarked %>">
             </div>
             <button type="submit">Filter</button>
         </form>
@@ -36,23 +52,29 @@
         <table>
             <thead>
                 <tr>
-                    <th>Area</th>
-                    <th>Item</th>
-                    <th>Element</th>
-                    <th>Year</th>
-                    <th>Unit</th>
-                    <th>Value</th>
+                    <th>Sobrevivio</th>
+                    <th>Clase</th>
+                    <th>Nombre</th>
+                    <th>Sexo</th>
+                    <th>Edad</th>
+                    <th>Ticket</th>
+                    <th>Precio</th>
+                    <th>Cabina</th>
+                    <th>Embarcacion</th>
                 </tr>
             </thead>
             <tbody>
                 <% data.forEach(row => { %>
                     <tr>
-                        <td><%= row.Area %></td>
-                        <td><%= row.Item %></td>
-                        <td><%= row.Element %></td>
-                        <td><%= row.Year %></td>
-                        <td><%= row.Unit %></td>
-                        <td><%= row.Value %></td>
+                        <td><%= row.Survived %></td>
+                        <td><%= row.Pclass %></td>
+                        <td><%= row.Name %></td>
+                        <td><%= row.Sex %></td>
+                        <td><%= row.Age %></td>
+                        <td><%= row.Ticket %></td>
+                        <td><%= row.Fare %></td>
+                        <td><%= row.Cabin %></td>
+                        <td><%= row.Embarked %></td>
                     </tr>
                 <% }) %>
             </tbody>
