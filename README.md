@@ -8,7 +8,8 @@ el usuario podrá acceder a un dashboard en base a la bsae de datos, actualmente
 - Las páginas son seguras, es decir, se necesita haber iniciado sesión para poder entrar, de otra manera, te regresará a que inicies sesión
 
 ### Objetivo General:
-D
+Desarrollar un software que haga uso de bases de datos para almacenar informacion de registro de usuario, asi como extraer informacion de las mismas y presentarla en un dashboard.
+
 ### Integrantes
  - [Braulio Sanchez](https://github.com/alesanchezb)
  - [Omar Pacheco](https://github.com/omarpach) 
@@ -26,11 +27,23 @@ git clone git@github.com:los-hambriados/banmx.git
 ```
 
 ### Configurar servidor de Node.js
-Se debe iniciar en la carpeta a la que se clono un servidor Node.js, y se deben descargar todas las dependencias (express, mySQL, passport, etc.).
+```
+cd banmx
+npm i express morgan mysql express-myconnection
+```
 
-### Tener capacidad de crear e importar bases de datos en mySQL
-Se debe tener a la vez software necesario para tener bases de datos de mySQL, ya sea el mismo mySQL o uno como XAMPP. Se deben de importar las bases de datos contenidas en la carpeta databases a la base de datos de mySQL.
+### Inicia la base de datos
+- Solo la primera vez:
+```
+mysql -u root -p -e "CREATE DATABASE [nombre_base_datos];" 
+```
+- Siempre:
+```
+mysql -u root -p [nombre_base_datos] < database/db.sql                                   
+```
 
 ### Iniciar el proyecto
-
-Con todo listo se debe iniciar la base de datos en la que se tienen guardadas tanto nodejs-users como pokemon_data. Se inicia el servidor con el comando "npm run devStart", y en el navegador se abre el link localhost:300. Una vez todo esto este listo de debera ver la pagina.
+Para iniciar el proyecto localmente:
+```
+npm run dev                                 
+```
