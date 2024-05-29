@@ -1,7 +1,7 @@
 # Descripción
 El proyecto consiste en el desarrollo de una página web interactiva y funcional utilizando tecnologías modernas como Node.js para el backend, CSS para el diseño y estilo, y MySQL como base de datos. El propósito principal de esta plataforma es proporcionar a los usuarios la capacidad de registrarse y crear una cuenta, así como iniciar sesión para acceder a funcionalidades personalizadas.
 
-Una vez que los usuarios han iniciado sesión, se les concede acceso a un dashboard dinámico y visualmente atractivo que presenta datos detallados sobre la producción de productos alimenticios en diversos países. Esta base de datos específica incluye información sobre diferentes tipos de productos alimenticios, cantidades producidas, y su distribución geográfica, lo que permite a los usuarios explorar y analizar estos datos de manera intuitiva.
+Una vez que los usuarios han iniciado sesión, se les concede acceso a un dashboard dinámico y visualmente atractivo que presenta datos sobre los pasajeros del accidente del Titanic. Estos datos nos permiten saber mas sobre el accidente del Titanic.
 
 El dashboard está diseñado para ser una herramienta poderosa que facilita la visualización y gestión de grandes volúmenes de datos, ofreciendo funcionalidades como filtrado, clasificación y representación gráfica de la información. Esto no solo mejora la experiencia del usuario, sino que también proporciona una plataforma robusta para el análisis de datos y la toma de decisiones informadas.
 
