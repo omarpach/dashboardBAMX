@@ -1,6 +1,11 @@
 # Descripción
-El proyecto consiste en una pagina web desarrollada utilizando Node.js, CSS y MySQL, lo cual permite a los usuarios poder iniciar sesión, asi como registrarse, una iniciado sesión
-el usuario podrá acceder a un dashboard en base a la bsae de datos, actualmente la base de datos utilizada es la cantidad de productos alimenticios producidos por país.
+El proyecto consiste en el desarrollo de una página web interactiva y funcional utilizando tecnologías modernas como Node.js para el backend, CSS para el diseño y estilo, y MySQL como base de datos. El propósito principal de esta plataforma es proporcionar a los usuarios la capacidad de registrarse y crear una cuenta, así como iniciar sesión para acceder a funcionalidades personalizadas.
+
+Una vez que los usuarios han iniciado sesión, se les concede acceso a un dashboard dinámico y visualmente atractivo que presenta datos detallados sobre la producción de productos alimenticios en diversos países. Esta base de datos específica incluye información sobre diferentes tipos de productos alimenticios, cantidades producidas, y su distribución geográfica, lo que permite a los usuarios explorar y analizar estos datos de manera intuitiva.
+
+El dashboard está diseñado para ser una herramienta poderosa que facilita la visualización y gestión de grandes volúmenes de datos, ofreciendo funcionalidades como filtrado, clasificación y representación gráfica de la información. Esto no solo mejora la experiencia del usuario, sino que también proporciona una plataforma robusta para el análisis de datos y la toma de decisiones informadas.
+
+Además, el sistema de autenticación asegura que solo los usuarios registrados y autorizados puedan acceder a la información sensible, garantizando la seguridad y privacidad de los datos. Este proyecto busca integrar de manera armoniosa y eficiente las capacidades de Node.js, CSS y MySQL para ofrecer una solución completa y accesible para la gestión de datos de producción alimentaria a escala global.
 
 # Características
 - El inicio de sesión se hace validando las credenciales que existan en una base de datos
