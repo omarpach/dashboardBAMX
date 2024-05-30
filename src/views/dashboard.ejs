@@ -1,92 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Titanic</title>
-        <link rel="stylesheet" href="./styles/dashboard_style.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Datos de los pasajeros del Titanic</h1>
-        <form method="GET" action="/data">
-            <div class="form-group">
-                <label for="Survived">Sobrevio:</label>
-                <input type="number" id="Survived" name="Survived" value="<%= filters.Survived %>">
-            </div>
-            <div class="form-group">
-                <label for="Pclass">Clase del pasajero:</label>
-                <input type="number" id="Pclass" name="Pclass" value="<%= filters.Pclass %>">
-            </div>
-            <div class="form-group">
-                <label for="Name">Nombre:</label>
-                <input type="text" id="Name" name="Name" value="<%= filters.Name %>">
-            </div>
-            <div class="form-group">
-                <label for="Sex">Sexo:</label>
-                <input type="text" id="Sex" name="Sex" value="<%= filters.Sex %>">
-            </div>
-            <div class="form-group">
-                <label for="Age">Edad:</label>
-                <input type="number" id="Age" name="Age" value="<%= filters.Age %>">
-            </div>
-            <div class="form-group">
-                <label for="Ticket">Ticket:</label>
-                <input type="text" id="Ticket" name="Ticket" value="<%= filters.Ticket %>">
-            </div>
-            <div class="form-group">
-                <label for="Fare">Precio del ticket:</label>
-                <input type="number" id="Fare" name="Fare" value="<%= filters.Fare %>">
-            </div>
-            <div class="form-group">
-                <label for="Cabin">Numero de Cabina</label>
-                <input type="text" id="Cabin" name="Cabin" value="<%= filters.Cabin %>">
-            </div>
-            <div class="form-group">
-                <label for="Embarked">Embarco:</label>
-                <input type="text" id="Embarked" name="Embarked" value="<%= filters.Embarked %>">
-            </div>
-            <button type="submit">Filter</button>
-        </form>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Sobrevivio</th>
-                    <th>Clase</th>
-                    <th>Nombre</th>
-                    <th>Sexo</th>
-                    <th>Edad</th>
-                    <th>Ticket</th>
-                    <th>Precio</th>
-                    <th>Cabina</th>
-                    <th>Embarcacion</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% data.forEach(row => { %>
-                    <tr>
-                        <td><%= row.Survived %></td>
-                        <td><%= row.Pclass %></td>
-                        <td><%= row.Name %></td>
-                        <td><%= row.Sex %></td>
-                        <td><%= row.Age %></td>
-                        <td><%= row.Ticket %></td>
-                        <td><%= row.Fare %></td>
-                        <td><%= row.Cabin %></td>
-                        <td><%= row.Embarked %></td>
-                    </tr>
-                <% }) %>
-            </tbody>
-        </table>
-     <div class="pagination">
-            <% if (pagination.page > 1) { %>
-                <a href="?page=<%= pagination.page - 1 %>&pageSize=<%= pagination.pageSize %>&Area=<%= filters.Area %>&Item=<%= filters.Item %>&Element=<%= filters.Element %>&Year=<%= filters.Year %>&Unit=<%= filters.Unit %>"><-- </a>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Titanic</title>
+  <link rel="stylesheet" href="./styles/dashboard_style.css">
+</head>
+
+<body>
+  <div class="container">
+    <h1>Datos de los pasajeros del Titanic</h1>
+    <form method="GET" action="/data">
+      <div class="form-group">
+        <label for="Survived">Sobrevivio:</label>
+        <input type="number" id="Survived" name="Survived" value="<%= filters.Survived %>">
+      </div>
+      <div class="form-group">
+        <label for="Pclass">Clase del pasajero:</label>
+        <input type="number" id="Pclass" name="Pclass" value="<%= filters.Pclass %>">
+      </div>
+      <div class="form-group">
+        <label for="Name">Nombre:</label>
+        <input type="text" id="Name" name="Name" value="<%= filters.Name %>">
+      </div>
+      <div class="form-group">
+        <label for="Sex">Sexo:</label>
+        <input type="text" id="Sex" name="Sex" value="<%= filters.Sex %>">
+      </div>
+      <div class="form-group">
+        <label for="Age">Edad:</label>
+        <input type="number" id="Age" name="Age" value="<%= filters.Age %>">
+      </div>
+      <div class="form-group">
+        <label for="Ticket">Ticket:</label>
+        <input type="text" id="Ticket" name="Ticket" value="<%= filters.Ticket %>">
+      </div>
+      <div class="form-group">
+        <label for="Fare">Precio del ticket:</label>
+        <input type="number" id="Fare" name="Fare" value="<%= filters.Fare %>">
+      </div>
+      <div class="form-group">
+        <label for="Cabin">Numero de Cabina</label>
+        <input type="text" id="Cabin" name="Cabin" value="<%= filters.Cabin %>">
+      </div>
+      <div class="form-group">
+        <label for="Embarked">Embarco:</label>
+        <input type="text" id="Embarked" name="Embarked" value="<%= filters.Embarked %>">
+      </div>
+      <button type="submit">Filtrar</button>
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Sobrevivio</th>
+          <th>Clase</th>
+          <th>Nombre</th>
+          <th>Sexo</th>
+          <th>Edad</th>
+          <th>Ticket</th>
+          <th>Precio</th>
+          <th>Cabina</th>
+          <th>Embarcacion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% data.forEach(row=> { %>
+          <tr>
+            <td>
+              <%= row.Survived %>
+            </td>
+            <td>
+              <%= row.Pclass %>
+            </td>
+            <td>
+              <%= row.Name %>
+            </td>
+            <td>
+              <%= row.Sex %>
+            </td>
+            <td>
+              <%= row.Age %>
+            </td>
+            <td>
+              <%= row.Ticket %>
+            </td>
+            <td>
+              <%= row.Fare %>
+            </td>
+            <td>
+              <%= row.Cabin %>
+            </td>
+            <td>
+              <%= row.Embarked %>
+            </td>
+          </tr>
+          <% }) %>
+      </tbody>
+    </table>
+    <div class="pagination">
+      <% if (pagination.page> 1) { %>
+        <a
+          href="?page=<%= pagination.page - 1 %>&pageSize=<%= pagination.pageSize %>&Survived=<%= filters.Survived %>&Pclass=<%= filters.Pclass %>&Name=<%= filters.Name %>&Sex=<%= filters.Sex %>&Age=<%= filters.Age %>&Ticket=<%= filters.Ticket %>&Fare=<%= filters.Fare %>&Cabin=<%= filters.Cabin %>&Embarked=<%= filters.Embarked %>">
+          Ant.
+        </a>
+        <% } %>
+          <% if (pagination.page < pagination.totalPages) { %>
+            <a
+              href="?page=<%= pagination.page + 1 %>&pageSize=<%= pagination.pageSize %>&Survived=<%= filters.Survived %>&Pclass=<%= filters.Pclass %>&Name=<%= filters.Name %>&Sex=<%= filters.Sex %>&Age=<%= filters.Age %>&Ticket=<%= filters.Ticket %>&Fare=<%= filters.Fare %>&Cabin=<%= filters.Cabin %>&Embarked=<%= filters.Embarked %>">
+              Sig.
+            </a>
             <% } %>
-            <% if (pagination.page < pagination.totalPages) { %>
-                <a href="?page=<%= pagination.page + 1 %>&pageSize=<%= pagination.pageSize %>&Area=<%= filters.Area %>&Item=<%= filters.Item %>&Element=<%= filters.Element %>&Year=<%= filters.Year %>&Unit=<%= filters.Unit %>"> --> </a>
-            <% } %>
-        </div>
     </div>
+    <div>
+      <button class="logout-button" type="button" onclick="window.location.href='/';">
+        Logout
+      </button>
+    </div>
+  </div>
 </body>
+
 </html>
