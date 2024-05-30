@@ -7,8 +7,6 @@ El dashboard está diseñado para ser una herramienta poderosa que facilita la v
 
 Además, el sistema de autenticación asegura que solo los usuarios registrados y autorizados puedan acceder a la información sensible, garantizando la seguridad y privacidad de los datos. Este proyecto busca integrar de manera armoniosa y eficiente las capacidades de Node.js, CSS y MySQL para ofrecer una solución completa y accesible para la gestión de datos de producción alimentaria a escala global.
 
-[![](./screenshot.png)](https://github.com/los-hambriados/banmx/blob/main/screenshot.png)
-
 ---
 # Características
 
@@ -19,40 +17,20 @@ Además, el sistema de autenticación asegura que solo los usuarios registrados 
 ### Objetivo General:
 Desarrollar un software que haga uso de bases de datos para almacenar informacion de registro de usuario, asi como extraer informacion de las mismas y presentarla en un dashboard.
 
-### Integrantes
- - [Braulio Sanchez](https://github.com/alesanchezb)
- - [Omar Pacheco](https://github.com/omarpach) 
- - [Ana Sofia Matti](https://github.com/venusielo) 
- - [Luis Mario Sainz](https://github.com/churroxd8) 
- - [David Ayala](https://github.com/jdayala111) 
- - [Daniel Alvarez](https://github.com/danuelalvarezt6) 
- - [Alfredo Arreola](https://github.com/curtax)
-
 # Instalación
 
 ### Clonar el repositorio
 ```
-git clone git@github.com:los-hambriados/banmx.git
+git clone https://github.com/omarpach/dashboardTitanic
 ```
 
 ### Configurar servidor de Node.js
 ```
-cd banmx
-npm i express morgan mysql express-myconnection
+cd dashboardTitanic
+npm install
 ```
 
-### Inicia la base de datos
-- Solo la primera vez:
-```
-mysql -u root -p -e "CREATE DATABASE [nombre_base_datos];" 
-```
-- Siempre:
-```
-mysql -u root -p [nombre_base_datos] < database/db.sql                                   
-```
-
-### Iniciar el proyecto
-Para iniciar el proyecto localmente:
+### Iniciar el proyecto localmente
 ```
 npm run dev                                 
 ```
