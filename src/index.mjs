@@ -22,12 +22,12 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use(morgan('dev'));
 app.use(myConnection(mysql, {
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    port: 3306,
-    database: 'banco_alimentos'
-    }, 'single'));
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  port: 3306,
+  database: 'banco_alimentos'
+}, 'single'));
 // Middlewares
 app.use(express.urlencoded({ extended: true }));
 // Usar el enrutador de páginas
@@ -36,14 +36,13 @@ app.use('/', router);
 // Rutas estáticas
 app.use(express.static(path.join(__dirname, 'public')));
 
-
 // Routes
 app.get('/', (req, res) => {
-    res.render('login');
+  res.render('login');
 });
 
 
 // Iniciar servidor
 app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+  console.log(`Server is running on http://localhost:${port}`);
 });
